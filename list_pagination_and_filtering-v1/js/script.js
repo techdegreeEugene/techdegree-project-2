@@ -1,4 +1,4 @@
-//grabbing elements for the student list and button creation
+//Grabbing elements for the student list and button creation
 const pageClass = document.querySelector('.page');
 const allStudentList = document.getElementsByClassName("student-item cf");
 const pageButDiv = document.createElement('div');
@@ -11,14 +11,13 @@ pageButDiv.appendChild(pageButUl);
 pageClass.appendChild(pageButDiv);
 
 
-
 // Show the selected students
 const showPage = (list, page) => {
   for(let i = 0; i < allStudentList.length; i++) { //Hide everything
     allStudentList[i].style.display = 'none';
   } 
   if(list.length === 0) {
-    resultsDiv.style.display = 'block';
+    resultsDiv.style.display = '';
   }
   else {
     let first = ((page - 1) * 10); //Show based on which button is chosen
@@ -35,21 +34,19 @@ const appendPageLinks = (studList) => {
   let numStudents = studList.length;
   let numPages = Math.floor(numStudents / 10) + 1;
   let selectedButton = 1;
-  
-
   showPage(studList, selectedButton);
 
   // Create new button for each page
   for(let i = 0; i < numPages; i++) {
     let pagButton = document.createElement('li');
-    let anchor = document.createElement('a');
-    anchor.href = '#';
+    let anchorTag = document.createElement('a');
+    anchorTag.href = '#';
     // Make first button active
     if(i === 0) {
-      anchor.className = 'active';
+      anchorTag.className = 'active';
     }
-    anchor.textContent = i + 1; // Buttons text will start at 1 instead of 0
-    pagButton.appendChild(anchor);
+    anchorTag.textContent = i + 1; // Buttons text will start at 1 instead of 0
+    pagButton.appendChild(anchorTag);
     pageButUl.appendChild(pagButton);
   }
 
